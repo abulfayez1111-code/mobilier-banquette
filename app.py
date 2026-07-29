@@ -17,7 +17,10 @@ def webhook():
         return "Verification token mismatch", 403
     elif request.method == "POST":
         data = request.json
-        print("Received webhook data:", data)
+        elif request.method == "POST":
+            data = request.get_json(silent=True)
+            print(">>> WEBHOOK POST RECEIVED:", data)
+            return "EVENT_RECEIVED", 200
         return "EVENT_RECEIVED", 200
 
 if __name__ == "__main__":
